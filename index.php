@@ -90,7 +90,7 @@ if ($error) {
         <th>Emaila</th>
         <th>Telefonoa</th>
         <th>Kurtsoa</th>
-        <th>Maila</th>
+        <th>ybgfv</th>
       </tr>
     </thead>
         <tbody>
