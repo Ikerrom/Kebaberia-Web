@@ -30,7 +30,7 @@
     $sentencia = $conexion->prepare($consultaSQL);
     $sentencia->execute();
 
-    header('Location: /izaskun%20ariketak/CRUD//index.php');
+    header('Location: index.php');
 
     } catch(PDOException $error) {
     $resultado['error'] = true;

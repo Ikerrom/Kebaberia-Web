@@ -1,7 +1,7 @@
 body{
     background-color: aliceblue;
 }
-/*
+
 a{
     color: rgb(21, 85, 85);
     text-decoration: none;
@@ -10,7 +10,7 @@ a:hover{
     color: #7fe1ff;
     text-decoration: none;
 
-}*/
+}
 .contenedor{
     padding-top: 5.5%;
 }
