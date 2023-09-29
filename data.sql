@@ -1,6 +1,6 @@
-CREATE DATABASE tutorial_crud;
+CREATE DATABASE kebaberia;
 
-use tutorial_crud;
+use kebaberia;
 
 CREATE TABLE alumnos (
   id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -8,6 +8,6 @@ CREATE TABLE alumnos (
   apellido VARCHAR(30) NOT NULL,
   email VARCHAR(50) NOT NULL,
   edad INT(3),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  curso VARCHAR(100),
+  nivel VARCHAR(100)
 );
