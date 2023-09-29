@@ -1,0 +1,22 @@
+body{
+    background-color: aliceblue;
+}
+
+.contenedor{
+    padding-top: 5.5%;
+}
+.centrado{
+    padding-left: 35%;
+}
+.centrado2{
+    padding-left: 27%;
+}
+a{
+    color: azure;
+    text-decoration: none;
+}
+a:hover{
+    color: #7fe1ff;
+    text-decoration: none;
+
+}
