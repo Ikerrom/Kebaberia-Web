@@ -32,8 +32,10 @@
                         "apellido" => $_POST['apellido'],
                         "email"    => $_POST['email'],
                         "edad"     => $_POST['edad'],
+                        "curso"    => $_POST['curso'],
+                        "nivel"     => $_POST['nivel'],
                     ];
-                        $consultaSQL = "INSERT INTO alumnos (nombre, apellido, email, edad)";
+                        $consultaSQL = "INSERT INTO alumnos (nombre, apellido, email, edad, curso, nivel)";
                         $consultaSQL .= "values (:" . implode(", :", array_keys($alumno)) . ")";
                         $sentencia = $conexion->prepare($consultaSQL);
                         $sentencia->execute($alumno);
@@ -83,6 +85,16 @@
             <div class="form-group">
             <label for="edad">Edad</label>
             <input type="text" name="edad" id="edad" placeholder="Insertar edad" class="form-control">
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="curso">Kurtsoa</label>
+            <input type="text" name="curso" id="curso" placeholder="Sartu kurtsoa" class="form-control">
+            </div>
+            <br>
+            <div class="form-group">
+            <label for="nivel">Maila</label>
+            <input type="text" name="nivel" id="nivel" placeholder="Sartu maila" class="form-control">
             </div>
             <br>
             <div class="form-group">

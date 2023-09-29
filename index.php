@@ -85,11 +85,12 @@ if ($error) {
       <tr>
         
         <th>#</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Email</th>
-        <th>Edad</th>
-        <th>Acciones</th>
+        <th>Izena</th>
+        <th>Abizena</th>
+        <th>Emaila</th>
+        <th>Telefonoa</th>
+        <th>Kurtsoa</th>
+        <th>Maila</th>
       </tr>
     </thead>
         <tbody>
@@ -104,6 +105,8 @@ if ($error) {
                 <td><?php echo escapar($fila["apellido"]); ?></td>
                 <td><?php echo escapar($fila["email"]); ?></td>
                 <td><?php echo escapar($fila["edad"]); ?></td>
+                <td><?php echo escapar($fila["curso"]); ?></td>
+                <td><?php echo escapar($fila["nivel"]); ?></td>
                 <td>
                 <a href="<?= 'borrar.php?id=' . escapar($fila["id"]) ?>">🗑️Borrar</a>
                 <a href="<?= 'editar.php?id=' . escapar($fila["id"]) ?>">✏️Editar</a>

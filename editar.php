@@ -33,7 +33,9 @@
                 "nombre"    => $_POST['nombre'],
                 "apellido"  => $_POST['apellido'],
                 "email"     => $_POST['email'],
-                "edad"      => $_POST['edad']
+                "edad"      => $_POST['edad'],
+                "curso"      => $_POST['curso'],
+                "nivel"      => $_POST['nivel']
               ];
               
                 $consultaSQL = "UPDATE alumnos SET
@@ -41,6 +43,8 @@
                     apellido = :apellido,
                     email = :email,
                     edad = :edad,
+                    curso = :curso,
+                    nivel = :nivel,
                     updated_at = NOW()
                     WHERE id = :id";
                     
@@ -119,6 +123,16 @@ if (isset($alumno) && $alumno) {
           <div class="form-group">
             <label for="edad">Edad</label>
             <input type="text" name="edad" id="edad" value="<?= escapar($alumno['edad']) ?>" class="form-control">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="curso">Curso</label>
+            <input type="curso" name="curso" id="curso" value="<?= escapar($alumno['curso']) ?>" class="form-control">
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="nivel">Nivel</label>
+            <input type="text" name="nivel" id="nivel" value="<?= escapar($alumno['nivel']) ?>" class="form-control">
           </div>
           <br>
           <div class="form-group">
