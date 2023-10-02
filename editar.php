@@ -9,7 +9,7 @@
     <?php
         include 'funciones.php';
         csrf();
-    
+     
         if (isset($_POST['submit']) && !hash_equals($_SESSION['csrf'], $_POST['csrf'])) {
           die();
         }
@@ -37,7 +37,7 @@
                 "curso"      => $_POST['curso'],
                 "nivel"      => $_POST['nivel']
               ];
-              
+              //$id = $_GET['id'];//
                 $consultaSQL = "UPDATE alumnos SET
                     nombre = :nombre,
                     apellido = :apellido,
@@ -46,7 +46,7 @@
                     curso = :curso,
                     nivel = :nivel,
                     updated_at = NOW()
-                    WHERE id = :id";
+                    WHERE id = :id";//WHERE id =" . $id;
                     
                 $consulta = $conexion->prepare($consultaSQL);
                 $consulta->execute($alumno);
