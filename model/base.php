@@ -84,12 +84,12 @@ class Base {
         try{
             $conn = $this->connection();
             $sql;
-            if($column == ""){
+            if($column == "" || $value == ""){
                 $sql = "SELECT * FROM $table";
             }else{
                 $sql = "SELECT * FROM $table WHERE $column ='".$value."'";
             }
-            $result = $conn->query($sql);
+            $result = $conn->query($sql)->fetchAll();
             $conn = null;
             return $result;
         }catch(PDOException $e) {
