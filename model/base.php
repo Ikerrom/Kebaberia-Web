@@ -23,7 +23,7 @@ class Base {
         try {
             $conn = $this->connection();
             $keys = array_keys($data);
-            $sql = "INSERT INTO $table (".implode(", ", $keys).") VALUES ( :".implode(", :",$keys).")";
+            $sql = "REPLACE INTO $table (".implode(", ", $keys).") VALUES ( :".implode(", :",$keys).")";
             $stmt = $conn->prepare($sql);
             $stmt->execute($data);
             $conn = null;

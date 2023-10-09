@@ -1,15 +1,15 @@
 <?php
-    require_once '../model/alumno.php';
+    require_once '../model/usuario.php';
     require_once '../controller/base-controller.php';
     
-    class AlumnoController extends BaseController {
-        private $type = "alumno";
+    class UsuarioController extends BaseController {
+        private $type = "usuario";
 
-        public function insertAlumno($data) {
+        public function insertUsuario($data) {
             try{
                 $e =  $this->insertError . $this->type;
-                $alumno = new Alumno();
-                if($alumno->insertAlumno($data)){   
+                $usuario = new Usuario();
+                if($usuario->insertUsuario($data)){   
                     header('Location: index.php');
                 }else{
                     require_once("../template/error.php");
@@ -23,11 +23,11 @@
             }
         }
     
-        public function updateAlumno($id, $data) {
+        public function updateUsuario($id, $data) {
             try{
                 $e =  $this->updateError . $this->type;
-                $alumno = new Alumno();
-                if($alumno->updateAlumno($id,$data)){
+                $usuario = new Usuario();
+                if($usuario->updateUsuario($id,$data)){
                     header('Location: index.php');
                 }else{
                     require_once("../template/error.php");
@@ -41,12 +41,12 @@
             }
         }
     
-        public function deleteAlumno($id) {
+        public function deleteUsuario($id) {
             try{
                 $e =  $this->deleteError . $this->type;
-                $alumno = new Alumno();
-                if($alumno->deleteAlumno($id)){
-                    header('Location: administrazioa.php');
+                $usuario = new Usuario();
+                if($usuario->deleteUsuario($id)){
+                    header('Location: index.php');
                 }else{
                     require_once("../template/error.php");
                 }
@@ -59,10 +59,10 @@
             }
         }
     
-        public function selectAlumnos($column,$value) {
+        public function selectUsuarios($column,$value) {
             try{
-                $alumno = new Alumno();
-                return $alumno->selectAlumnos($column,$value);
+                $usuario = new Usuario();
+                return $usuario->selectUsuarios($column,$value);
                 header('Location: index.php');
             }catch(PDOException $e){
                 $e = $e->getMessage();
@@ -73,11 +73,11 @@
             }
         }
     
-        public function selectAlumno($column, $value) {
+        public function selectUsuario($column, $value) {
             try{
                 $e =  $this->selectError . $this->type;
-                $alumno = new Alumno();
-                $result= $alumno->selectAlumno($column, $value);
+                $usuario = new Usuario();
+                $result= $usuario->selectUsuario($column, $value);
                 if ($result != false) {
                     return $result;
                     header('Location: index.php');
