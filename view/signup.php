@@ -1,6 +1,17 @@
 <?php 
     include "../template/header.php";
     require_once '../controller/usuario-controller.php';
+    $usuarioController = new UsuarioController();
+    if (isset($_POST['signup'])) {
+        $data = array(
+            'nombre'   => $_POST['nombre'],
+            'email'   => $_POST['email'],
+            'password'    => password_hash($_POST['password'], PASSWORD_DEFAULT),
+        );
+        $usuarioController->insertUsuario($data);
+    }
+    
+
 ?>
 
 <body>
