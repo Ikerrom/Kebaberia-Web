@@ -1,4 +1,6 @@
 <?php 
+    ini_set ('display_errors', 1);
+    ini_set ('display_startup_errors', 1);
     include "../template/header.php";
     require_once '../controller/curso-controller.php';
 
