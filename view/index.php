@@ -40,8 +40,8 @@
         <tbody>
     </table>
     <br>
-    <button><a href="./singin.php">Iniciar sesion</a></button>
-    <button><a href="./singup.php">Registrarse</a></button>
+    <button><a href="./signin.php">Iniciar sesion</a></button>
+    <button><a href="./signup.php">Registrarse</a></button>
 </body>
 <?php 
     include "../template/footer.php";

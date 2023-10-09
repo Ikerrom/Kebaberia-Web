@@ -10,7 +10,7 @@
                 $e =  $this->insertError . $this->type;
                 $alumno = new Alumno();
                 if($alumno->insertAlumno($data)){   
-                    header('Location: index.php');
+                    header('Location: administrazioa.php');
                 }else{
                     require_once("../template/error.php");
                 }
