@@ -12,14 +12,14 @@
                 if($curso->insertCurso($data)){   
                     header('Location: index.php');
                 }else{
-                    require_once("../view/error.php");
+                    require_once("../template/error.php");
                 }
             }catch(PDOException $e){
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             } catch (Exception $e) {
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             }
         }
     
@@ -30,14 +30,14 @@
                 if($curso->updateCurso($id,$data)){
                     header('Location: index.php');
                 }else{
-                    require_once("../view/error.php");
+                    require_once("../template/error.php");
                 }
             }catch(PDOException $e){
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             }catch (Exception $e) {
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             }
         }
     
@@ -48,14 +48,14 @@
                 if($curso->deleteCurso($id)){
                     header('Location: index.php');
                 }else{
-                    require_once("../view/error.php");
+                    require_once("../template/error.php");
                 }
             }catch(PDOException $e){
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             }catch (Exception $e) {
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             }
         }
     
@@ -66,10 +66,10 @@
                 header('Location: index.php');
             }catch(PDOException $e){
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             }catch (Exception $e) {
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             }
         }
     
@@ -82,14 +82,14 @@
                     return $result;
                     header('Location: index.php');
                 }else{
-                    require_once("../view/error.php");
+                    require_once("../template/error.php");
                 } 
             }catch(PDOException $e){
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             } catch (Exception $e) {
                 $e = $e->getMessage();
-                require_once("../view/error.php");
+                require_once("../template/error.php");
             }
         }
     }
