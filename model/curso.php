@@ -1,5 +1,5 @@
 <?php
-require_once 'Base.php';
+require_once 'base.php';
 
 class Curso extends Base {
 	public $tablename = 'cursos';
