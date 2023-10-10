@@ -10,17 +10,15 @@
     $usuarioController = new UsuarioController();
     $filtercolumn = "";
     $filtervalue = "";
-
     if(isset($_GET['id'])){
         $selected_alumno = $alumnoController->selectAlumno("id",$_GET['id']);
     }
-
-
 
     if (isset($_POST['filter'])) {
         $filtercolumn = strtolower($_POST['column']);
         $filtervalue = $_POST['value'];
     }
+    
     $alumnos = $alumnoController->selectAlumnos($filtercolumn,$filtervalue);
 
     if (isset($_POST['insert'])) {
@@ -96,14 +94,12 @@
                 <td><?php echo $alumno['apellido'] ; ?></td>
                 <td><?php echo $alumno['edad'] ; ?></td>
                 <td><?php echo $alumno['email'] ; ?></td>
-                <td><?php echo $alumno['curso_id'] != null ? $cursos[$alumno['curso_id']-1]['id'] . " ". $cursos[$alumno['curso_id']-1]['nombre'] : "No hay curso"; ?></td>
-                <td><?php echo $alumno['usuario_id'] != null ? $usuarios[$alumno['usuario_id']-1]['id'] . " ". $usuarios[$alumno['usuario_id']-1]['nombre'] : "No hay usuario"; ?></td>
+                <td><?php echo $alumno['curso_id'] != null ? $cursoController->selectCurso("id",$alumno['curso_id'])['id'] . " ". $cursoController->selectCurso("id",$alumno['curso_id'])['nombre'] : "No hay curso"; ?></td>
+                <td><?php echo $alumno['usuario_id'] != null ? $usuarioController->selectUsuario("id",$alumno['usuario_id'])['id'] . " ". $usuarioController->selectUsuario("id",$alumno['usuario_id'])['nombre'] : "No hay usuario"; ?></td>
                 <td><?php echo $alumno['created_at'] ; ?></td>
                 <td><?php echo $alumno['updated_at'] ; ?></td>
                 <td><a href="<?php echo "borrar.php?id=" . $alumno['id'];?>" >Borrar</a></td>
-                <form method="post">
-                    <td><a href="<?php echo "administrazioa.php?id=" . $alumno['id'];?>" >Editar</a></td>
-                </from>
+                <td><a href="<?php echo "administrazioa.php?id=" . $alumno['id'];?>" >Editar</a></td>
                 <td>
                 </td>
             </tr>
@@ -120,7 +116,7 @@
                 <td><input type="email" value="<?php echo isset($selected_alumno) ? $selected_alumno['email'] : "";?>"  name="email" id="email" placeholder="Email" class="form-control"></td>
                 <td>
                     <select name="curso_id" id="curso_id">
-                    <option value="<?php echo isset($selected_alumno) ? $selected_alumno['curso_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['curso_id']) ? $cursos[$selected_alumno['curso_id']-1]['id'] . " ". $cursos[$selected_alumno['curso_id']-1]['nombre'] : "No hay curso"; ?></option>
+                    <option value="<?php echo isset($selected_alumno) ? $selected_alumno['curso_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['curso_id']) ?  $cursoController->selectCurso("id",$selected_alumno['curso_id'])['id'] . " ". $cursoController->selectCurso("id",$selected_alumno['curso_id'])['nombre']  : "No hay curso"; ?></option>
                     <option value="">No hay curso</option>
 
                     <?php
@@ -137,7 +133,7 @@
                 </td>
                 <td>
                     <select name="usuario_id" id="usuario_id">
-                    <option value="<?php echo isset($selected_alumno) ? $selected_alumno['usuario_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['usuario_id']) ? $usuarios[$selected_alumno['usuario_id']-1]['id'] . " ". $usuarios[$selected_alumno['usuario_id']-1]['nombre'] : "No hay usuario"; ?></option>
+                    <option value="<?php echo isset($selected_alumno) ? $selected_alumno['usuario_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['usuario_id']) ? $usuarioController->selectUsuario("id",$selected_alumno['usuario_id'])['id'] . " ". $usuarioController->selectUsuario("id",$selected_alumno['usuario_id'])['nombre'] : "No hay usuario"; ?></option>
                     <option value="">No hay curso</option>
                     <?php
                         if (!empty($usuarios)) {
@@ -148,7 +144,6 @@
                             }
                         }
                     ?>
-                    
                     </select>
                 </td>
                 <td><input type="submit" name="insert" value="✏️"></td>

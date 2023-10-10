@@ -87,7 +87,7 @@ class Base {
             if($column == "" || $value == ""){
                 $sql = "SELECT * FROM $table";
             }else{
-                $sql = "SELECT * FROM $table WHERE $column ='".$value."'";
+                $sql = "SELECT * FROM $table WHERE LOWER($column) LIKE LOWER('%".$value."%')";
             }
             $result = $conn->query($sql)->fetchAll();
             $conn = null;

@@ -8,9 +8,10 @@
         public function insertUsuario($data) {
             try{
                 $e =  $this->insertError . $this->type;
+                $data['contrasena'] = openssl_encrypt($data['contrasena'] ,"AES-128-ECB","salchichonmelocotondelimon");
                 $usuario = new Usuario();
                 if($usuario->insertUsuario($data)){   
-                    header('Location: index.php');
+                    header('Location: signup.php');
                 }else{
                     require_once("../template/error.php");
                 }
