@@ -30,7 +30,8 @@
 ?>
 
 <body>
-    <form method="post" onsubmit="">
+    <div class="body">
+    <form method="post"   class="sign" onsubmit="">
             <label for="nombre">Nombre de usuario</label>
             <input type="text" name="nombre" id="nombre">
             <label for="email">Correo electronico</label>
@@ -39,8 +40,10 @@
             <input type="password" name="contrasena" id="contrasena">
             <label for="r_contrasena">Repetir contraseña</label>
             <input type="password" name="r_contrasena" id="r_contrasena">
+            <br>
             <input type="submit" name="signup" value="Entrar">
     </form>
+    </div>
 </body>
 
 <?php include "../template/footer.php"; ?>

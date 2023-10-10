@@ -47,15 +47,12 @@
 
 ?>
 <body>
-<h1>Aplicación CRUD PHP</h1>
     <div>
-        <hr>
-        <h3>Filtro</h3>
+        <p>Filtro</p>
         <form method="post">
             <label for="column">Columna</label>
             <select name="column" id="column">
                 <option value="<?=$filtercolumn?>" selected hidden><?= ucfirst($filtercolumn) ?></option>
-                <option value="id">Id</option>
                 <option value="nombre">Nombre</option>
                 <option value="apellido">Apellido</option>
                 <option value="edad">Edad</option>
@@ -74,7 +71,6 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Edad</th>
@@ -91,7 +87,6 @@
                 foreach ($alumnos as $alumno) {
         ?>
             <tr>
-                <td><?php echo $alumno['id'];?></td>
                 <td><?php echo $alumno['nombre'];?></td>
                 <td><?php echo $alumno['apellido'] ; ?></td>
                 <td><?php echo $alumno['edad'] ; ?></td>
@@ -111,7 +106,6 @@
         ?>
         <form method="post">
             <tr> 
-                <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['id'] : "";?>" name="id" id="id" placeholder="Id" class="form-control"></td>
                 <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['nombre'] : "";?>" name="nombre" id="nombre" placeholder="Nombre" class="form-control"></td>
                 <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['apellido'] : "";?>" name="apellido" id="apellido" placeholder="Apellido" class="form-control"></td>
                 <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['edad'] : "";?>" name="edad" id="edad" placeholder="Edad" class="form-control"></td>

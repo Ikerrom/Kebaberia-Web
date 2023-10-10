@@ -24,13 +24,17 @@
 ?>
 
 <body>
-    <form method="post" onsubmit="">
+    <div class="body">
+    <form method="post" onsubmit="" class="sign">
             <label for="nombre">Nombre de usuario</label>
             <input type="text" name="nombre" id="nombre">
             <label for="contrasena">Contraseña</label>
             <input type="password" name="contrasena" id="contrasena">
+            <br>
             <input type="submit" name="signin" value="Entrar">
     </form>
+    </div>
+
 </body>
 
 <?php include "../template/footer.php"; ?>

@@ -11,35 +11,27 @@
     $cursos = $cursoController->selectCursos('nombre',$filternombre,"index.php");
 ?>
 <body>
-    <form method="post">
-            <label for="nombre">Nombre</label>
+    <div class="body">
+        <p style="font-size:2vw;">CURSOS</p>
+        <br>
+        <table >
+            <?php
+                if (!empty($cursos)) {
+                foreach ($cursos as $curso) {
+            ?>
+                <tr>
+                    <td><?php echo "- " . $curso['nombre'] ;?></td>
+            <?php
+                    }
+                }
+            ?>
+        </table>
+        <br>
+        <form method="post">
             <input type="text" name="nombre" id="nombre" value="<?= $filternombre ?>">
             <input type="submit" name="filter" value="Filtrar">
-            <button><a href="./index.php">Limpiar filtro</a></button>
-    </form>
-    <br>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-            if (!empty($cursos)) {
-                foreach ($cursos as $curso) {
-        ?>
-            <tr>
-                <td><?php echo $curso['nombre'] ;?></td>
-        <?php
-                }
-            }
-        ?>
-        <tbody>
-    </table>
-    <br>
-    <button><a href="./signin.php">Iniciar sesion</a></button>
-    <button><a href="./signup.php">Registrarse</a></button>
+        </form>
+    </div>
 </body>
 <?php 
     include "../template/footer.php";
