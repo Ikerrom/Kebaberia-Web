@@ -39,3 +39,6 @@ VALUES
   ('Desarrollo de aplicaciones web'),
   ('Técnico Superior en Administración y Finanzas'),
   ('Administración de empresas');
+
+INSERT INTO usuarios (nombre, email, contrasena, is_admin)
+VALUES('Admin', 'Admin@admin.com', 'LFj3jr4EZucNSBKS+MS85w==', 1);

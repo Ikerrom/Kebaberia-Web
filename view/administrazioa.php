@@ -8,19 +8,20 @@
     $alumnoController = new AlumnoController();
     $cursoController = new CursoController();
     $usuarioController = new UsuarioController();
+
     $filtercolumn = "";
     $filtervalue = "";
+
     if(isset($_GET['id'])){
-        $selected_alumno = $alumnoController->selectAlumno("id",$_GET['id']);
+        $selected_alumno = $alumnoController->selectAlumno("id",$_GET['id'],"administrazioa.php");
     }
 
     if (isset($_POST['filter'])) {
         $filtercolumn = strtolower($_POST['column']);
         $filtervalue = $_POST['value'];
     }
-    
-    $alumnos = $alumnoController->selectAlumnos($filtercolumn,$filtervalue);
 
+    
     if (isset($_POST['insert'])) {
         $data = array(
             'id'   => $_POST['id'],
@@ -37,11 +38,12 @@
         if($data['usuario_id'] == ""){
             $data['usuario_id'] = null; 
         }
-        $alumnoController->insertAlumno($data);
+        $alumnoController->insertAlumno($data,"administrazioa.php");
     }
 
-    $cursos = $cursoController->selectCursos("","");
-    $usuarios = $usuarioController->selectUsuarios("","");
+    $alumnos = $alumnoController->selectAlumnos($filtercolumn,$filtervalue,"administrazioa.php");
+    $cursos = $cursoController->selectCursos("","","administrazioa.php");
+    $usuarios = $usuarioController->selectUsuarios("","","administrazioa.php");
 
 ?>
 <body>
@@ -94,8 +96,8 @@
                 <td><?php echo $alumno['apellido'] ; ?></td>
                 <td><?php echo $alumno['edad'] ; ?></td>
                 <td><?php echo $alumno['email'] ; ?></td>
-                <td><?php echo $alumno['curso_id'] != null ? $cursoController->selectCurso("id",$alumno['curso_id'])['id'] . " ". $cursoController->selectCurso("id",$alumno['curso_id'])['nombre'] : "No hay curso"; ?></td>
-                <td><?php echo $alumno['usuario_id'] != null ? $usuarioController->selectUsuario("id",$alumno['usuario_id'])['id'] . " ". $usuarioController->selectUsuario("id",$alumno['usuario_id'])['nombre'] : "No hay usuario"; ?></td>
+                <td><?php echo $alumno['curso_id'] != null ? $cursoController->selectCurso("id",$alumno['curso_id'],"administrazioa.php")['id'] . " ". $cursoController->selectCurso("id",$alumno['curso_id'],"administrazioa.php")['nombre'] : "No hay curso"; ?></td>
+                <td><?php echo $alumno['usuario_id'] != null ? $usuarioController->selectUsuario("id",$alumno['usuario_id'],"administrazioa.php")['id'] . " ". $usuarioController->selectUsuario("id",$alumno['usuario_id'],"administrazioa.php")['nombre'] : "No hay usuario"; ?></td>
                 <td><?php echo $alumno['created_at'] ; ?></td>
                 <td><?php echo $alumno['updated_at'] ; ?></td>
                 <td><a href="<?php echo "borrar.php?id=" . $alumno['id'];?>" >Borrar</a></td>
@@ -116,7 +118,7 @@
                 <td><input type="email" value="<?php echo isset($selected_alumno) ? $selected_alumno['email'] : "";?>"  name="email" id="email" placeholder="Email" class="form-control"></td>
                 <td>
                     <select name="curso_id" id="curso_id">
-                    <option value="<?php echo isset($selected_alumno) ? $selected_alumno['curso_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['curso_id']) ?  $cursoController->selectCurso("id",$selected_alumno['curso_id'])['id'] . " ". $cursoController->selectCurso("id",$selected_alumno['curso_id'])['nombre']  : "No hay curso"; ?></option>
+                    <option value="<?php echo isset($selected_alumno) ? $selected_alumno['curso_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['curso_id']) ?  $cursoController->selectCurso("id",$selected_alumno['curso_id'],"administrazioa.php")['id'] . " ". $cursoController->selectCurso("id",$selected_alumno['curso_id'],"administrazioa.php")['nombre']  : "No hay curso"; ?></option>
                     <option value="">No hay curso</option>
 
                     <?php
@@ -133,7 +135,7 @@
                 </td>
                 <td>
                     <select name="usuario_id" id="usuario_id">
-                    <option value="<?php echo isset($selected_alumno) ? $selected_alumno['usuario_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['usuario_id']) ? $usuarioController->selectUsuario("id",$selected_alumno['usuario_id'])['id'] . " ". $usuarioController->selectUsuario("id",$selected_alumno['usuario_id'])['nombre'] : "No hay usuario"; ?></option>
+                    <option value="<?php echo isset($selected_alumno) ? $selected_alumno['usuario_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['usuario_id']) ? $usuarioController->selectUsuario("id",$selected_alumno['usuario_id'],"administrazioa.php")['id'] . " ". $usuarioController->selectUsuario("id",$selected_alumno['usuario_id'],"administrazioa.php")['nombre'] : "No hay usuario"; ?></option>
                     <option value="">No hay curso</option>
                     <?php
                         if (!empty($usuarios)) {

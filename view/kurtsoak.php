@@ -6,25 +6,25 @@
     $usuarioController = new UsuarioController();
     $alumnoController = new AlumnoController();
     $cursoController = new CursoController();
+
     if(isset($_GET['id'])){
-        $selected_alumno = $alumnoController->selectAlumno("id",$_GET['id']);
+        $selected_alumno = $alumnoController->selectAlumno("id",$_GET['id'],"kurtsoak.php");
+        $selected_usuario = $usuarioController->selectUsuario("id",$selected_alumno['usuario_id'],"kurtsoak.php");
     }
 
     if (isset($_POST['cursochange'])) {
-        $data = array(
-
-            'curso_id'   => $_POST['curso_id'],
-        );
-        $alumnoController->updateAlumno($selected_alumno['id'],$data);
+        $data = array('curso_id'   => $_POST['curso_id']);
+        $alumnoController->updateAlumno($selected_alumno['id'],$data,"kurtsoak.php?id=" . $_GET['id']);
     }
 
-    $cursos = $cursoController->selectCursos("","");
+    $cursos = $cursoController->selectCursos("","","kurtsoak.php");
 ?>
 
 <body>
+    <h1>Bienvenido <?php echo isset($selected_alumno) ? $selected_usuario['nombre'] : "" ?></h1>
     <form method="post" onsubmit="">
             <select name="curso_id" id="curso_id">
-            <option value="<?php echo isset($selected_alumno) ? $selected_alumno['curso_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['curso_id']) ?  $cursoController->selectCurso("id",$selected_alumno['curso_id'])['id'] . " ". $cursoController->selectCurso("id",$selected_alumno['curso_id'])['nombre']  : "No hay curso"; ?></option>
+            <option value="<?php echo isset($selected_alumno) ? $selected_alumno['curso_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['curso_id']) ?  $cursoController->selectCurso("id",$selected_alumno['curso_id'],"kurtsoak.php")['id'] . " ". $cursoController->selectCurso("id",$selected_alumno['curso_id'],"kurtsoak.php")['nombre']  : "No hay curso"; ?></option>
                     <option value="">No hay curso</option>
 
                     <?php

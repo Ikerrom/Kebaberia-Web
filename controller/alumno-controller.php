@@ -5,12 +5,12 @@
     class AlumnoController extends BaseController {
         private $type = "alumno";
 
-        public function insertAlumno($data) {
+        public function insertAlumno($data,$url) {
             try{
                 $e =  $this->insertError . $this->type;
                 $alumno = new Alumno();
                 if($alumno->insertAlumno($data)){   
-                    header('Location: administrazioa.php');
+                    header('Location: ' . $url);
                 }else{
                     require_once("../template/error.php");
                 }
@@ -23,12 +23,12 @@
             }
         }
     
-        public function updateAlumno($id, $data) {
+        public function updateAlumno($id, $data,$url) {
             try{
                 $e =  $this->updateError . $this->type;
                 $alumno = new Alumno();
                 if($alumno->updateAlumno($id,$data)){
-                    header('Location: index.php');
+                    header('Location: '. $url);
                 }else{
                     require_once("../template/error.php");
                 }
@@ -41,12 +41,12 @@
             }
         }
     
-        public function deleteAlumno($id) {
+        public function deleteAlumno($id,$url) {
             try{
                 $e =  $this->deleteError . $this->type;
                 $alumno = new Alumno();
                 if($alumno->deleteAlumno($id)){
-                    header('Location: administrazioa.php');
+                    header('Location: ' . $url);
                 }else{
                     require_once("../template/error.php");
                 }
@@ -59,11 +59,11 @@
             }
         }
     
-        public function selectAlumnos($column,$value) {
+        public function selectAlumnos($column,$value,$url) {
             try{
                 $alumno = new Alumno();
                 return $alumno->selectAlumnos($column,$value);
-                header('Location: index.php');
+                header('Location: ' . $url);
             }catch(PDOException $e){
                 $e = $e->getMessage();
                 require_once("../template/error.php");
@@ -73,14 +73,14 @@
             }
         }
     
-        public function selectAlumno($column, $value) {
+        public function selectAlumno($column, $value,$url) {
             try{
                 $e =  $this->selectError . $this->type;
                 $alumno = new Alumno();
                 $result= $alumno->selectAlumno($column, $value);
                 if ($result != false) {
                     return $result;
-                    header('Location: index.php');
+                    header('Location: ' . $url);
                 }else{
                     require_once("../template/error.php");
                 } 

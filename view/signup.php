@@ -12,14 +12,13 @@
             'contrasena'    => $_POST['contrasena']
         );
         
-        $selected_alumno = $alumnocontroller->selectAlumno("email",$_POST['email']);
+        $selected_alumno = $alumnocontroller->selectAlumno("email",$_POST['email'],"signup.php");
         if($selected_alumno != null){
-            $usuarioController->insertUsuario($data);
-            $inserted_usuario = $usuarioController->selectUsuario("email",$_POST['email']);
+            $usuarioController->insertUsuario($data,"signup.php");
+            $inserted_usuario = $usuarioController->selectUsuario("email",$_POST['email'],"signup.php");
             $data2 = array('usuario_id' => $inserted_usuario['id']);
 
-            $alumnocontroller->updateAlumno($selected_alumno['id'],$data2);
-            header('Location: kutsoak.php?id=' . $selected_alumno['id']);
+            $alumnocontroller->updateAlumno($selected_alumno['id'],$data2,"kurtsoak.php?id=". $selected_alumno['id']);
         }else{
             $e = "El email no esta en uso";
             require_once("../template/error.php");
