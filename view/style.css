@@ -40,6 +40,10 @@ a,p,td,label,input,select,option{
     font-weight: normal;
 }
 
+input,select{
+    height: 3vh;
+}
+
 th{
     font-size: 1vw;
     text-decoration: none;

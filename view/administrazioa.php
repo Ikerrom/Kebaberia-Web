@@ -47,8 +47,9 @@
 
 ?>
 <body>
+    <div class="body">
+    <div style="width:90%;">
     <div>
-        <p>Filtro</p>
         <form method="post">
             <label for="column">Columna</label>
             <select name="column" id="column">
@@ -63,7 +64,6 @@
             <label for="value">Valor</label>
             <input type="text" name="value" id="value" value="<?= $filtervalue ?>">
             <input type="submit" name="filter" value="Filtrar">
-            <button><a href="./administrazioa.php">Limpiar filtro</a></button>
         </form>
             
         <br>
@@ -77,8 +77,6 @@
                 <th>Email</th>
                 <th>Curso</th>
                 <th>Usuario</th>
-                <th>Created</th>
-                <th>Updated</th>
             </tr>
         </thead>
         <tbody>
@@ -93,10 +91,8 @@
                 <td><?php echo $alumno['email'] ; ?></td>
                 <td><?php echo $alumno['curso_id'] != null ? $cursoController->selectCurso("id",$alumno['curso_id'],"administrazioa.php")['id'] . " ". $cursoController->selectCurso("id",$alumno['curso_id'],"administrazioa.php")['nombre'] : "No hay curso"; ?></td>
                 <td><?php echo $alumno['usuario_id'] != null ? $usuarioController->selectUsuario("id",$alumno['usuario_id'],"administrazioa.php")['id'] . " ". $usuarioController->selectUsuario("id",$alumno['usuario_id'],"administrazioa.php")['nombre'] : "No hay usuario"; ?></td>
-                <td><?php echo $alumno['created_at'] ; ?></td>
-                <td><?php echo $alumno['updated_at'] ; ?></td>
-                <td><a href="<?php echo "borrar.php?id=" . $alumno['id'];?>" >Borrar</a></td>
-                <td><a href="<?php echo "administrazioa.php?id=" . $alumno['id'];?>" >Editar</a></td>
+                <td><button><a href="<?php echo "borrar.php?id=" . $alumno['id'];?>" >Borrar</a></button></td>
+                <td><button><a href="<?php echo "administrazioa.php?id=" . $alumno['id'];?>"> Editar</a></button></td>
                 <td>
                 </td>
             </tr>
@@ -104,12 +100,15 @@
                 }
             }
         ?>
+                <tr>
+        <td><br></td>
+        </tr>
         <form method="post">
             <tr> 
-                <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['nombre'] : "";?>" name="nombre" id="nombre" placeholder="Nombre" class="form-control"></td>
-                <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['apellido'] : "";?>" name="apellido" id="apellido" placeholder="Apellido" class="form-control"></td>
-                <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['edad'] : "";?>" name="edad" id="edad" placeholder="Edad" class="form-control"></td>
-                <td><input type="email" value="<?php echo isset($selected_alumno) ? $selected_alumno['email'] : "";?>"  name="email" id="email" placeholder="Email" class="form-control"></td>
+                <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['nombre'] : "";?>" name="nombre" id="nombre" placeholder="Nombre"></td>
+                <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['apellido'] : "";?>" name="apellido" id="apellido" placeholder="Apellido"></td>
+                <td><input type="text" value="<?php echo isset($selected_alumno) ? $selected_alumno['edad'] : "";?>" name="edad" id="edad" placeholder="Edad"></td>
+                <td><input type="email" value="<?php echo isset($selected_alumno) ? $selected_alumno['email'] : "";?>"  name="email" id="email" placeholder="Email"></td>
                 <td>
                     <select name="curso_id" id="curso_id">
                     <option value="<?php echo isset($selected_alumno) ? $selected_alumno['curso_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['curso_id']) ?  $cursoController->selectCurso("id",$selected_alumno['curso_id'],"administrazioa.php")['id'] . " ". $cursoController->selectCurso("id",$selected_alumno['curso_id'],"administrazioa.php")['nombre']  : "No hay curso"; ?></option>
@@ -148,6 +147,8 @@
 
         <tbody>
     </table>
+    </div>
+    </div>
 </body>
 
 <?php include "../template/footer.php"?>

@@ -18,7 +18,7 @@
                 }
             }
         }
-        $e = "Contraseña incorrecta";
+        $e = "Error contraseña incorrecta";
         require_once("../template/error.php");
     }
 ?>

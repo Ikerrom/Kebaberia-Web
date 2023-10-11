@@ -21,7 +21,11 @@
 ?>
 
 <body>
-    <h1>Bienvenido <?php echo isset($selected_alumno) ? $selected_usuario['nombre'] : "" ?></h1>
+    <div class="body">
+    <br>
+    <p style="font-size:6vh;">Bienvenido <?php echo isset($selected_alumno) ? $selected_usuario['nombre'] : "" ?></p>
+    <p>selecciona un curso en el que matricurlarte:</p>
+    <br>
     <form method="post" onsubmit="">
             <select name="curso_id" id="curso_id">
             <option value="<?php echo isset($selected_alumno) ? $selected_alumno['curso_id'] : "";?>" selected hidden><?php echo isset($selected_alumno['curso_id']) ?  $cursoController->selectCurso("id",$selected_alumno['curso_id'],"kurtsoak.php")['id'] . " ". $cursoController->selectCurso("id",$selected_alumno['curso_id'],"kurtsoak.php")['nombre']  : "No hay curso"; ?></option>
@@ -37,8 +41,10 @@
                         }
                     ?>
             </select>
-            <input type="submit" name="cursochange" value="Entrar">
+            <input type="submit" name="cursochange" value="Matricularse">
     </form>
+    </div>
+
 </body>
 
 <?php include "../template/footer.php"; ?>

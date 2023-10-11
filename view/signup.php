@@ -20,7 +20,7 @@
 
             $alumnocontroller->updateAlumno($selected_alumno['id'],$data2,"kurtsoak.php?id=". $selected_alumno['id']);
         }else{
-            $e = "El email no esta en uso";
+            $e = "Error email incorrecto";
             require_once("../template/error.php");
         }
          
