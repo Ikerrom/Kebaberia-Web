@@ -40,6 +40,11 @@ a,p,td,label,input,select,option{
     font-weight: normal;
 }
 
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+
 input,select{
     height: 3vh;
 }
