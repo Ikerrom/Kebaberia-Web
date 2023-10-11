@@ -24,8 +24,9 @@
 ?>
 
 <body>
+
     <div class="body">
-    <form method="post" onsubmit="" class="sign">
+    <form method="post" onsubmit="return validar()" class="sign">
             <label for="nombre">Nombre de usuario</label>
             <input type="text" name="nombre" id="nombre">
             <label for="contrasena">Contraseña</label>

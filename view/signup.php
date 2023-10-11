@@ -23,15 +23,12 @@
             $e = "Error email incorrecto";
             require_once("../template/error.php");
         }
-         
     }
-
-
 ?>
 
 <body>
     <div class="body">
-    <form method="post"   class="sign" onsubmit="">
+    <form method="post" onsubmit="return validar()" class="sign">
             <label for="nombre">Nombre de usuario</label>
             <input type="text" name="nombre" id="nombre">
             <label for="email">Correo electronico</label>
